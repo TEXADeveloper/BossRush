@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvnrwdgo5iiad"]
+
+[ext_resource type="Script" path="res://Objects/Player/Scripts/player_controller.gd" id="1_vn4qm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tspyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwl7c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50bqv"]
+friction = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m1dcu"]
+specular_color = Color(0.803922, 0, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5w7ov"]
+radius = 13.0
+height = 58.0
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Floor"]
+position = Vector2(606, 642)
+scale = Vector2(1248.83, 134.118)
+texture = SubResource("CanvasTexture_tspyd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(606, 642)
+scale = Vector2(63.2, 6.76)
+shape = SubResource("RectangleShape2D_bwl7c")
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(98, 59)
+physics_material_override = SubResource("PhysicsMaterial_50bqv")
+lock_rotation = true
+script = ExtResource("1_vn4qm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(25.56, 57.92)
+texture = SubResource("CanvasTexture_m1dcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_5w7ov")
